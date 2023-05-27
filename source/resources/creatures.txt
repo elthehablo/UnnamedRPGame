@@ -1,0 +1,4 @@
+#layout:
+#id, name, hp, mp, str, dex, con, int, wis, char, exp
+0,testCreature,10,10,1,1,1,1,1,1,10
+1,testCreatureTwo,20,20,1,1,1,1,1,1,20
