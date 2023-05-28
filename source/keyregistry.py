@@ -3,6 +3,11 @@ import time
 
 class KeyRegistry:
     def keyPressed():
+        '''
+        registers a key press
+        
+        return -- string value that can be parsed into movement or actions
+        '''
         #TODO: enhance while loop to catch errors
         while True:
             try:

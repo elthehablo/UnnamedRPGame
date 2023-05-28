@@ -4,6 +4,8 @@ class DrawMap:
     def PrettyDraw(currentMap):
         '''
         draws currentMap in a pretty way using a visual library
+        
+        TODO: we may want to use a txt file and the importer to draw later
         '''
         N = np.size(currentMap, axis = 0)
         M = np.size(currentMap, axis = 1)

@@ -6,6 +6,11 @@ class MapMovement:
         self.coords = coords
     
     def move(self, keyPress):
+        '''
+        takes the current map and moves character as long as there is open space
+        
+        return -- void (movement is done by manipulating self.coords and self.currentMap)
+        '''
         #setting old position to open space
         self.currentMap[self.coords[0]][self.coords[1]] = 1
         newCoords = np.array(self.coords)

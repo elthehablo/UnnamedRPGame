@@ -10,12 +10,12 @@ import drawmap
 mapOne = np.array(
     [[0, 0, 0, 0, 0, 0, 0, 0, 0],
      [0, 1, 1, 1, 1, 1, 1, 1, 0],
+     [0, 1, 0, 1, 1, 0, 0, 1, 0],
      [0, 1, 1, 1, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 1, 1, 1, 0],
-     [0, 1, 1, 1, 1, 1, 1, 1, 0],
+     [0, 1, 0, 1, 1, 1, 1, 1, 0],
+     [0, 1, 0, 1, 1, 0, 1, 1, 0],
+     [0, 0, 0, 1, 1, 1, 1, 1, 0],
+     [0, 1, 0, 1, 1, 1, 1, 1, 0],
      [0, 0, 0, 0, 0, 0, 0, 0, 0]]
 )
 
@@ -32,7 +32,7 @@ def main():
     
     mapOne[3][2] = 50
     mapmover = mapmovement.MapMovement(mapOne, [3, 2])
-    for i in range(10):
+    for i in range(25):
         keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
         mapmover.move(keyBeingPressed)
         drawmap.DrawMap.PrettyDraw(mapOne)
