@@ -1,5 +1,6 @@
 import keyregistry
 import os
+import numpy as np
 
 class Menu:
     #this class is used to start the program
@@ -27,7 +28,7 @@ class Menu:
             elif(keyBeingPressed == "interact"):
                 if(position == 0):
                     #TODO: start new game
-                    print("to be implemented")
+                    self.newgame()
                 elif(position == 1):
                     #TODO: load saved game(using txt character sheets)
                     print("to be implemented")
@@ -49,6 +50,45 @@ class Menu:
         if(position == 2):
             print(">", end = '')
         print("exit")
+    
+    def newgame(self):
+        os.system('cls')
+        print("------------------")
+        print("Starting new game!")
+        print("------------------")
+        print("Enter your character stats:")
+        name = str(input("Your name: "))
+        level = int(input("Your level: "))
+        healthpoints = int(input("Your health points: "))
+        manapoints = int(input("Your mana points: "))
+        strength = int(input("Your strength: "))
+        dexterity = int(input("Your dexterity: "))
+        constitution = int(input("Your constitution: "))
+        intelligence = int(input("Your intelligence: "))
+        wisdom = int(input("Your wisdom: "))
+        charisma = int(input("Your charisma: "))
+        experience = 0
         
+        newcharacter = np.array([0, level, healthpoints, manapoints, strength, dexterity, constitution, intelligence, wisdom, charisma, experience])
+        path = "source/resources/characters/"+str(name)+".txt"
+        hd, ft = self.prettyHeaderAndFooter(name)
+        np.savetxt(path, newcharacter, header = hd, footer = ft, delimiter = ',', newline = " ", comments = "", fmt = '%i')
+
+    def prettyHeaderAndFooter(self, name):
+        '''
+        creates a nice header and footer for the character sheet using the character name
+        '''
+        blank = ''
+        for i in range(len(name)):
+            blank += '-'
+        header = '#-----'+str(name)+'-----\n'
+        footer = '\n#-----'+str(blank)+'-----\n'
+        
+        return header, footer
+        
+
+    def savegame(self):
+        return
+    
             
         
