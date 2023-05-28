@@ -29,6 +29,8 @@ class ImportHandler:
     def ImportCreatureStat(self, id, valueId):
         '''
         returns the specific value of the column at column valueId for creature id
+        
+        note -- to get the string value from the imported tables you need to do *.decode('UTF-8')
         '''
         
         dataArray = np.loadtxt(self.dataPath, delimiter = ',', dtype={
