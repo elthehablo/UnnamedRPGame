@@ -37,4 +37,12 @@ class ImportHandler:
        
         return dataArray[id][valueId]
     
+    def ImportMap(self):
+        '''
+        returns a specific map to play on
+        '''
+        
+        dataArray = np.loadtxt(self.dataPath, delimiter = ',', dtype = 'i4')
+        
+        return dataArray    
         

@@ -31,11 +31,14 @@ def main():
     print("value is: "+value.decode('UTF-8'))
     
     mapOne[3][2] = 50
-    mapmover = mapmovement.MapMovement(mapOne, [3, 2])
+    
+    mapTwoPath = importer.ImportHandler("source/resources/maps/map0.txt")
+    mapTwo = mapTwoPath.ImportMap()
+    mapmover = mapmovement.MapMovement(mapTwo, [3, 2])
     for i in range(25):
         keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
         mapmover.move(keyBeingPressed)
-        drawmap.DrawMap.PrettyDraw(mapOne)
+        drawmap.DrawMap.PrettyDraw(mapTwo)
     return
 
 if __name__ == "__main__":
