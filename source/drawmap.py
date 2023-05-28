@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 class DrawMap:
     def PrettyDraw(currentMap):
@@ -7,6 +8,8 @@ class DrawMap:
         
         TODO: we may want to use a txt file and the importer to draw later
         '''
+        #clear screen first
+        os.system('cls')
         N = np.size(currentMap, axis = 0)
         M = np.size(currentMap, axis = 1)
         
@@ -17,7 +20,7 @@ class DrawMap:
                 elif(currentMap[i][j] == 1):
                     print(" ", end = '')
                 elif(currentMap[i][j] == 50):
-                    print("O", end = '')
+                    print('\x1b[6;30;42m' + 'O' + '\x1b[0m', end = '')
                 else:
                     print(" ", end = '')
             print("")

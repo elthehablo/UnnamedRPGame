@@ -26,6 +26,9 @@ class KeyRegistry:
                 elif keyboard.is_pressed('f'):
                     time.sleep(0.5)
                     return "interact"
+                elif keyboard.is_pressed('escape'):
+                    time.sleep(0.5)
+                    return "quit"
             except:
                 break
         return
