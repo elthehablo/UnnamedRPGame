@@ -6,6 +6,8 @@ class MapMovement:
         self.coords = coords
     
     def move(self, keyPress):
+        #setting old position to open space
+        self.currentMap[self.coords[0]][self.coords[1]] = 1
         newCoords = np.array(self.coords)
         
         match keyPress:
@@ -24,9 +26,13 @@ class MapMovement:
         print("new coords:"+str(newCoords[0])+" "+str(newCoords[1]))
         
         if (self.currentMap[newCoords[0]][newCoords[1]] == 0):
-            return self.coords
+            self.coords = np.array(self.coords)
+            
         elif (self.currentMap[newCoords[0]][newCoords[1]] == 1):
-            return newCoords
+            self.coords = np.array(newCoords)
+        #setting player on new position
+        self.currentMap[self.coords[0]][self.coords[1]] = 50
         return
+        
     
     
