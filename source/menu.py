@@ -16,7 +16,9 @@ class Menu:
             return
         keyBeingPressed = None
         position = 0
-        while(keyBeingPressed != quit):
+        newPosition = 0
+        debug = False
+        while(keyBeingPressed != "quit"):
             self.cursorprint(position)
             keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
             if(keyBeingPressed == 'moveDown'):
@@ -34,6 +36,30 @@ class Menu:
                     print("to be implemented")
                 elif(position == 2):
                     break
+            elif(keyBeingPressed == "debug"):
+                debug = True
+                break
+        
+        while(debug and keyBeingPressed != "quit"):
+            #open debug menu
+            self.debugMenuPrint(newPosition)
+            keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
+            if(keyBeingPressed == 'moveDown'):
+                if(newPosition < 2):
+                    newPosition += 1
+            elif(keyBeingPressed == 'moveUp'):
+                if(newPosition > 0):
+                    newPosition -= 1
+            elif(keyBeingPressed == "interact"):
+                if(newPosition == 0):
+                    #TODO: fight creature
+                    print("to be implemented")
+                elif(newPosition == 1):
+                    #TODO: TBA
+                    print("to be implemented")
+                elif(newPosition == 2):
+                    self.start()
+                
     
     def cursorprint(self, position):
         os.system('cls')
@@ -86,6 +112,21 @@ class Menu:
         
         return header, footer
         
+    def debugMenuPrint(self, position):
+        os.system('cls')
+        print("------------------")
+        print("Secret debug menu")
+        print("------------------")
+        print("What do you want to do?")
+        if(position == 0):
+            print(">", end = '')
+        print("fight creature with id")
+        if(position == 1):
+            print(">", end = '')
+        print("TBA")
+        if(position == 2):
+            print(">", end = '')
+        print("exit")
 
     def savegame(self):
         return
