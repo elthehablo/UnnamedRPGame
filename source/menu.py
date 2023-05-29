@@ -58,6 +58,7 @@ class Menu:
                     #TODO: TBA
                     print("to be implemented")
                 elif(newPosition == 2):
+                    debug = False
                     self.start()
                 
     
