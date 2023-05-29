@@ -1,6 +1,8 @@
-import keyregistry
 import os
 import numpy as np
+
+import keyregistry
+import combat
 
 class Menu:
     #this class is used to start the program
@@ -18,6 +20,7 @@ class Menu:
         position = 0
         newPosition = 0
         debug = False
+        debugCombat = False
         while(keyBeingPressed != "quit"):
             self.cursorprint(position)
             keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
@@ -53,13 +56,38 @@ class Menu:
             elif(keyBeingPressed == "interact"):
                 if(newPosition == 0):
                     #TODO: fight creature
-                    print("to be implemented")
+                    debugCombat = True
+                    break
                 elif(newPosition == 1):
                     #TODO: TBA
                     print("to be implemented")
                 elif(newPosition == 2):
                     debug = False
                     self.start()
+        
+        while(debugCombat and keyBeingPressed != "quit"):
+            #open debug menu
+            parseCondition = False
+            
+            while(not parseCondition):
+                parsedCreatureID = int(input("enter creature ID:"))
+                if(parsedCreatureID >= 0 and parsedCreatureID < 100000):
+                    # dummy check 
+                    # unfortunately with the cast we still might be able 
+                    # to parse weird things
+                    parseCondition = True
+                else:
+                    print("not a valid ID!")
+            
+            debugPlayer = np.array([0, 1, 100, 100, 1, 1, 1, 1, 1, 1, 0])
+            newCombat = combat.Combat(debugPlayer, 0)
+            cond = newCombat.printCombat(True)
+            if(cond):
+                debugCombat = False
+            
+        self.start()
+                    
+            
                 
     
     def cursorprint(self, position):

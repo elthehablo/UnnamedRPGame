@@ -1,6 +1,9 @@
 import numpy as np
 
-class ImportHandler: 
+class ImportHandler:
+    #IMPORTANT NOTE: imports and their paths are of course going to be 
+    # heavily dependent on where the main executable is
+    
     def __init__(self, dataPath):
         self.dataPath = dataPath
         print("Path stored as: '"+str(self.dataPath)+"'")

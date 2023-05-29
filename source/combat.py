@@ -1,6 +1,6 @@
 import os
 
-from importer import *
+import importer
 import keyregistry
 
 class Combat:
@@ -15,13 +15,14 @@ class Combat:
         self.creatureID = creatureID
         
         #initialisation of creature and player
-        creatureValues = self.importCreature()
-        self.currentCreatureHealth = creatureValues[3]
+        self.creatureValues = self.importCreature()
+        self.currentCreatureHealth = self.creatureValues[3]
         self.currentPlayerHealth = combatPlayer[2]
     
     def importCreature(self):
-        creatureValues = ImportHandler.ImportCreature(self.creatureID)
-        return creatureValues
+        newImport = importer.ImportHandler("source/resources/creatures.txt")
+        newCreatureValues = newImport.ImportCreature(self.creatureID)
+        return newCreatureValues
     
     def importPlayer(self, filename):
         #imports stats for the player
@@ -30,11 +31,12 @@ class Combat:
         return
     
     
-    def printCombat(self):
+    def printCombat(self, debugging = False):
         keyBeingPressed = None
         position = 0
         while(keyBeingPressed != "quit"):
             os.system('cls')
+            print(self.creatureValues)
             print("------------------")
             print("A "+str(self.creatureValues[1].decode('UTF-8'))+" appears!")
             print("------------------")
@@ -60,7 +62,10 @@ class Combat:
                     #TODO: implement using item
                     print("to be implemented")
                 elif(position == 3):
-                    break
+                    if(debugging):
+                        return True
+                    else:
+                        return False #if not debugging
                     
         
     def combatCursor(self, position):
