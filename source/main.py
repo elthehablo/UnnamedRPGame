@@ -1,10 +1,3 @@
-import numpy as np
-
-
-import importer
-import mapmovement
-import keyregistry
-import drawmap
 import menu
 
 def main():
