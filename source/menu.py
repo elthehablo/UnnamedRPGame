@@ -80,7 +80,7 @@ class Menu:
                     print("not a valid ID!")
             
             debugPlayer = np.array([0, 1, 100, 100, 1, 1, 1, 1, 1, 1, 0])
-            newCombat = combat.Combat(debugPlayer, 0)
+            newCombat = combat.Combat(debugPlayer, parsedCreatureID)
             cond = newCombat.printCombat(True)
             if(cond):
                 debugCombat = False

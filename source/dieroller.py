@@ -25,4 +25,5 @@ class DieRoller:
     @staticmethod
     def rollD100():
         return random.randint(1, 100)
+        return random.randint(1, 100)
         
