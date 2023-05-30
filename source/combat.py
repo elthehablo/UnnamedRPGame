@@ -1,5 +1,7 @@
 import os
+import time
 
+import dieroller
 import importer
 import keyregistry
 
@@ -54,7 +56,9 @@ class Combat:
             elif(keyBeingPressed == "interact"):
                 if(position == 0):
                     #TODO: implement fighting
-                    print("to be implemented")
+                    rolls = self.combatInitiativeRoll()
+                    self.combatProcess(rolls)
+                    break
                 elif(position == 1):
                     #TODO: implement using ability (spells)
                     print("to be implemented")
@@ -82,3 +86,44 @@ class Combat:
         if(position == 3):
             print(">", end = '')
         print("run")
+        
+    
+    def combatInitiativeRoll(self):
+        '''
+        simulating roll for initiative
+        
+        return -- returns boolean whether player rolled higher or equal to the monster, meaning the player should go first
+        '''
+        monsterRoll = dieroller.DieRoller.rollD20() 
+        playerRoll = dieroller.DieRoller.rollD20()
+        print(str(self.creatureValues[1].decode('UTF-8'))+" rolled "+str(monsterRoll)+" for initiative!")
+        print("Player rolled "+str(playerRoll)+" for initiative!")
+        time.sleep(2) #sleep to show rolls
+        return playerRoll >= monsterRoll 
+    
+    def combatProcess(self, playerGoesFirst):
+        position = 0
+        os.system('cls')
+        print(self.creatureValues)
+        print("------------------")
+        print("A "+str(self.creatureValues[1].decode('UTF-8'))+" appears!")
+        print("------------------")
+        print("Creature level: "+str(self.creatureValues[2]))
+        print("Creature health: "+str(self.currentCreatureHealth)+"/"+str(self.creatureValues[3]))
+        print("------------------")
+        self.combatCursor(position)
+        combatDone = False
+        while(not combatDone):
+            #TODO: implement combat
+            if(playerGoesFirst):
+                #do player turn first
+                break
+            else:
+                #do enemy turn first
+                break
+    
+    def damageToMonster():
+        return
+    
+    def damageToPlayer():
+        return
