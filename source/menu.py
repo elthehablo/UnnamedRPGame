@@ -21,6 +21,8 @@ class Menu:
         newPosition = 0
         debug = False
         debugCombat = False
+        debugMap = False
+        parseCondition = False
         while(keyBeingPressed != "quit"):
             self.cursorprint(position)
             keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
@@ -60,14 +62,14 @@ class Menu:
                     break
                 elif(newPosition == 1):
                     #TODO: TBA
-                    print("to be implemented")
+                    debugMap = True
                 elif(newPosition == 2):
                     debug = False
                     self.start()
         
         while(debugCombat and keyBeingPressed != "quit"):
             #open debug menu
-            parseCondition = False
+            
             
             while(not parseCondition):
                 parsedCreatureID = int(input("enter creature ID:"))
@@ -84,7 +86,15 @@ class Menu:
             cond = newCombat.printCombat(True)
             if(cond):
                 debugCombat = False
-            
+        
+        while(debugMap and keyBeingPressed != "quit"):
+            parsedMapName = input("enter map .txt file:")
+            try:
+                print("Valid map name!")
+            except:
+                print("not a valid map name!")
+                
+        
         self.start()
                     
             
@@ -152,7 +162,7 @@ class Menu:
         print("fight creature with id")
         if(position == 1):
             print(">", end = '')
-        print("TBA")
+        print("traverse map")
         if(position == 2):
             print(">", end = '')
         print("exit")
