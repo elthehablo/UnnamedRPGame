@@ -63,6 +63,7 @@ class Menu:
                 elif(newPosition == 1):
                     #TODO: TBA
                     debugMap = True
+                    break
                 elif(newPosition == 2):
                     debug = False
                     self.start()
