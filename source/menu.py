@@ -3,6 +3,7 @@ import numpy as np
 
 import keyregistry
 import combat
+import mapwalker
 
 class Menu:
     #this class is used to start the program
@@ -92,6 +93,9 @@ class Menu:
             parsedMapName = input("enter map .txt file:")
             try:
                 print("Valid map name!")
+                newmapwalk = mapwalker.MapWalker(parsedMapName, [3, 3])
+                newmapwalk.start(15)
+                debugMap = False
             except:
                 print("not a valid map name!")
                 
