@@ -1,6 +1,9 @@
 import numpy as np
 
-class ImportHandler: 
+class ImportHandler:
+    #IMPORTANT NOTE: imports and their paths are of course going to be 
+    # heavily dependent on where the main executable is
+    
     def __init__(self, dataPath):
         self.dataPath = dataPath
         print("Path stored as: '"+str(self.dataPath)+"'")
@@ -10,8 +13,8 @@ class ImportHandler:
         returns the full database for all creatures
         '''
         dataArray = np.loadtxt(self.dataPath, delimiter = ',', dtype={
-        'names': ('id', 'name', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp'),
-        'formats': ('i4', 'S30', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4')})
+        'names': ('id', 'name','level', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp', 'armorclass', 'hitdie', 'hitdiceamount', 'attackmodifier'),
+        'formats': ('i4', 'S30','i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'S4', 'i4', 'i4')})
 
         return dataArray
     
@@ -20,8 +23,8 @@ class ImportHandler:
         returns the full row of the creature at id
         '''
         dataArray = np.loadtxt(self.dataPath, delimiter = ',', dtype={
-        'names': ('id', 'name', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp'),
-        'formats': ('i4', 'S30', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4')})
+        'names': ('id', 'name','level', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp', 'armorclass', 'hitdie', 'hitdiceamount', 'attackmodifier'),
+        'formats': ('i4', 'S30','i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'S4', 'i4', 'i4')})
 
         
         return dataArray[id]
@@ -34,8 +37,8 @@ class ImportHandler:
         '''
         
         dataArray = np.loadtxt(self.dataPath, delimiter = ',', dtype={
-        'names': ('id', 'name', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp'),
-        'formats': ('i4', 'S30', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4')})
+        'names': ('id', 'name','level', 'hp', 'mp', 'str', 'dex', 'con', 'int', 'wis', 'char', 'exp', 'armorclass', 'hitdie', 'hitdiceamount', 'attackmodifier'),
+        'formats': ('i4', 'S30','i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'i4', 'S4', 'i4', 'i4')})
        
         return dataArray[id][valueId]
     
