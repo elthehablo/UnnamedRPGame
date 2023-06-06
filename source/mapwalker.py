@@ -15,7 +15,7 @@ class MapWalker:
     
     def __init__(self, mapname, startingcoords):
         self.startingcoords = startingcoords
-        importInstance = importer.ImportHandler("resources/maps/"+str(mapname))
+        importInstance = importer.ImportHandler("source/resources/maps/"+str(mapname))
         self.importedmap = importInstance.ImportMap()
     
     def start(self, runlength):

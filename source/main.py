@@ -1,5 +1,4 @@
 import menu
-import dieroller
 
 def main():
     #TODO: code to execute main program

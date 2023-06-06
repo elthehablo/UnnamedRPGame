@@ -89,17 +89,11 @@ class Menu:
             if(cond):
                 debugCombat = False
         
-        while(debugMap and keyBeingPressed != "quit"):
-            parsedMapName = input("enter map .txt file:")
-            try:
-                print("Valid map name!")
-                newmapwalk = mapwalker.MapWalker(parsedMapName, [3, 3])
-                newmapwalk.start(15)
-                debugMap = False
-            except:
-                print("not a valid map name!")
-                
         
+        parsedMapName = input("enter map .txt file:")
+        
+        newmovemap = mapwalker.MapWalker(parsedMapName, [3, 3])
+        newmovemap.start(15)
         self.start()
                     
             
