@@ -1,9 +1,11 @@
 import numpy as np
+import dieroller
 
 class MapMovement:
-    def __init__(self, currentMap, coords):
+    def __init__(self, currentMap, coords, mapEncounterOdds):
         self.currentMap = currentMap
         self.coords = coords
+        self.mapEncounterOdds = mapEncounterOdds
         self.newMapValue = 1
     
     def move(self, keyPress):
@@ -36,12 +38,22 @@ class MapMovement:
         else:
             self.coords = np.array(newCoords)
             self.newMapValue = self.currentMap[newCoords[0]][newCoords[1]]
+        #checking for monster encounter
+        self.__monsterEncounter(newCoords, self.mapEncounterOdds)
+        
         #setting player on new position
         self.currentMap[self.coords[0]][self.coords[1]] = 50
         return
 
-    def __monsterEncounter(self):
-        return
+    def __monsterEncounter(self, coordstoparse, encounterodds):
+        '''
+        checks tiles that are monster passable, and allows for them to start combat
+        '''
+        objectToParse = self.currentMap[coordstoparse[0]][coordstoparse[1]]
+        if(objectToParse == 2):
+            if(dieroller.DieRoller.rollD100() < encounterodds):
+                return True
+        return False
     
     def __checkObstructMovement(self, coordstoparse):
         '''
