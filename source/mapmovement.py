@@ -39,7 +39,8 @@ class MapMovement:
             self.coords = np.array(newCoords)
             self.newMapValue = self.currentMap[newCoords[0]][newCoords[1]]
         #checking for monster encounter
-        self.__monsterEncounter(newCoords, self.mapEncounterOdds)
+        if(self.__monsterEncounter(newCoords, self.mapEncounterOdds)):
+            print("Doing combat!")
         
         #setting player on new position
         self.currentMap[self.coords[0]][self.coords[1]] = 50

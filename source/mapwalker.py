@@ -13,14 +13,15 @@ class MapWalker:
     '''
     
     
-    def __init__(self, mapname, startingcoords):
+    def __init__(self, mapname, startingcoords, mapEncounterOdds):
         self.startingcoords = startingcoords
+        self.mapEncounterOdds = mapEncounterOdds
         importInstance = importer.ImportHandler("source/resources/maps/"+str(mapname))
         self.importedmap = importInstance.ImportMap()
     
     def start(self, runlength):
         #initialise mapmover
-        mapmover = mapmovement.MapMovement(self.importedmap, self.startingcoords)
+        mapmover = mapmovement.MapMovement(self.importedmap, self.startingcoords, self.mapEncounterOdds)
         
         if(self.importedmap[self.startingcoords[0]][self.startingcoords[1]] == 1):
             self.importedmap[self.startingcoords[0]][self.startingcoords[1]] = 50 #set to player
