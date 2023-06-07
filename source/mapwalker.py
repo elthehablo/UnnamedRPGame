@@ -29,6 +29,7 @@ class MapWalker:
             drawmap.DrawMap.PrettyDraw(self.importedmap)
             keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
             mapmover.move(keyBeingPressed)
+    
             
             
         

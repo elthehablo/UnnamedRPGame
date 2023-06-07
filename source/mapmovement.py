@@ -4,6 +4,7 @@ class MapMovement:
     def __init__(self, currentMap, coords):
         self.currentMap = currentMap
         self.coords = coords
+        self.newMapValue = 1
     
     def move(self, keyPress):
         '''
@@ -12,7 +13,7 @@ class MapMovement:
         return -- void (movement is done by manipulating self.coords and self.currentMap)
         '''
         #setting old position to open space
-        self.currentMap[self.coords[0]][self.coords[1]] = 1
+        self.currentMap[self.coords[0]][self.coords[1]] = self.newMapValue
         newCoords = np.array(self.coords)
         
         match keyPress:
@@ -30,14 +31,37 @@ class MapMovement:
         print("old coords:"+str(self.coords[0])+" "+str(self.coords[1]))
         print("new coords:"+str(newCoords[0])+" "+str(newCoords[1]))
         
-        if (self.currentMap[newCoords[0]][newCoords[1]] == 0):
+        if (self.__checkObstructMovement(newCoords) == False):
             self.coords = np.array(self.coords)
-            
-        elif (self.currentMap[newCoords[0]][newCoords[1]] == 1):
+        else:
             self.coords = np.array(newCoords)
+            self.newMapValue = self.currentMap[newCoords[0]][newCoords[1]]
         #setting player on new position
         self.currentMap[self.coords[0]][self.coords[1]] = 50
         return
+
+    def __monsterEncounter(self):
+        return
+    
+    def __checkObstructMovement(self, coordstoparse):
+        '''
+        a boolean function to check whether the current object is not passable
+        '''
+        objectToParse = self.currentMap[coordstoparse[0]][coordstoparse[1]]
+        match objectToParse:
+            case 0:
+                return False
+            case 1 | 2:
+                return True
+            case 3 | 4:
+                return False
+            case 5:
+                return True
+            case 11:
+                return False
+
+        
+        
         
     
     
