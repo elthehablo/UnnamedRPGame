@@ -1,7 +1,6 @@
 import menu
 
 def main():
-    #TODO: code to execute main program
     newmenu = menu.Menu(False, True)
     newmenu.start()
     return

@@ -22,6 +22,15 @@ class Combat:
         self.currentPlayerHealth = combatPlayer[2]
     
     def importCreature(self):
+        '''
+        imports creature that you want to fight, using the creatureID provided
+        
+        --arguments--
+        none
+        
+        --returns--
+        the values of the imported creature
+        '''
         newImport = importer.ImportHandler("source/resources/creatures.txt")
         newCreatureValues = newImport.ImportCreature(self.creatureID)
         return newCreatureValues
@@ -34,6 +43,15 @@ class Combat:
     
     
     def printCombat(self, debugging = False):
+        '''
+        void function that prints the combat menu that you can use for actions
+        
+        --arguments--
+        debugging -- boolean value that is used when we are fighting a monster in debug mode
+        
+        --returns--
+        none
+        '''
         keyBeingPressed = None
         position = 0
         while(keyBeingPressed != "quit"):
@@ -75,6 +93,9 @@ class Combat:
                     
         
     def combatCursor(self, position):
+        '''
+        the cursor
+        '''
         print("What do you want to do?")
         if(position == 0):
             print(">", end = '')
