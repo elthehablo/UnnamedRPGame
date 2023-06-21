@@ -6,6 +6,18 @@ import importer
 import keyregistry
 
 class Combat:
+    '''
+    class docstring TODO: implement
+    
+    --constructor--
+    
+    ++arguments++
+    combatPlayer -- 
+    creatureID   -- 
+    
+    --functions--
+    importCreature -- 
+    '''
     #contains values of the imported creatures
     creatureValues = []
     playerValues = []
@@ -44,7 +56,7 @@ class Combat:
     
     def printCombat(self, debugging = False):
         '''
-        void function that prints the combat menu that you can use for actions
+        void function that prints the initial combat menu that you can use for actions
         
         --arguments--
         debugging -- boolean value that is used when we are fighting a monster in debug mode
@@ -94,7 +106,16 @@ class Combat:
         
     def combatCursor(self, position):
         '''
-        the cursor
+        prints a cursor that allows you to scroll through options shown in this function
+        
+        TODO: make a specific class for cursors
+        TODO: check to not exceed maxPositions with start position
+        
+        --arguments--
+        position -- position that the cursor starts at
+        
+        --returns--
+        none
         '''
         print("What do you want to do?")
         if(position == 0):
@@ -113,9 +134,13 @@ class Combat:
     
     def combatInitiativeRoll(self):
         '''
-        simulating roll for initiative
+        simulating roll for initiative like in D&D kind of games also printing the monster's roll and the player's roll
         
-        return -- returns boolean whether player rolled higher or equal to the monster, meaning the player should go first
+        --arguments--
+        none
+        
+        --returns--
+        returns boolean whether player rolled higher or equal to the monster, meaning the player should go first
         '''
         monsterRoll = dieroller.DieRoller.rollD20() 
         playerRoll = dieroller.DieRoller.rollD20()
@@ -125,6 +150,17 @@ class Combat:
         return playerRoll >= monsterRoll 
     
     def combatProcess(self, playerGoesFirst, combatDone, playerWon):
+        '''
+        the combat process that starts once the first turn has been made also using the cursor above
+        
+        --arguments--
+        playerGoesFirst -- true if player won the initiative roll, makes player attacks go first
+        combatDone      -- true if the combat is done, returns out of the function (kind of defunct)
+        playerWon       -- true if player won the battle
+        
+        --returns--
+        boolean value whether the player won or is dead
+        '''
         if(combatDone):
             return playerWon
         
@@ -191,6 +227,19 @@ class Combat:
                     break
     
     def damageToMonster(self):
+        '''
+        deals damage to the monster using the armor class from the creature to determine whether a hit is made
+        weaponmodifier is added to the hitroll to see if AC is exceeded
+        player critical hits when hitroll hits a natural 20, doing 2 attacks
+        
+        --arguments--
+        none
+        
+        --returns--
+        total damage done to monster
+        TODO: add weapon modifier based on weapon player is using
+        TODO: add correct di(c)e that player uses for the weapon
+        '''
         #TODO: add AC to monsters in creatures.txt for now we use default 15 same goes for weapon modifiers and dice to be rolled
         ArmorClass = self.creatureValues[12] #armor class value
         WeaponModifier = 0 #hack
@@ -200,7 +249,7 @@ class Combat:
         
         hitroll = dieroller.DieRoller.rollD20()
         totaldamage = 0
-        print("Player hits ("+str(hitroll)+") for: ", end="")
+        print("Player hits ("+str(hitroll)+" "+str(WeaponModifier)+") for: ", end="")
         time.sleep(1)
         if(hitroll == 20):
             print("Critical hit for "+str(rolldamage1)+" and "+str(rolldamage2)+" damage!")
@@ -214,6 +263,17 @@ class Combat:
         return totaldamage
     
     def damageToPlayer(self):
+        '''
+        similar to damageToMonster but damage done to player, using PlayerArmorClass defined by the character and CreatureAttackModifier
+        TODO: implement PlayerArmorClass
+        TODO: see below, implement being able to use multiple dice for strong monsters
+        
+        --arguments--
+        none
+        
+        --returns--
+        total damage done to player
+        '''
         PlayerArmorClass = 17 #hack
         CreatureAttackModifier = self.creatureValues[15] #attack value
         #NOTE: about below. ideally we'd want a function
