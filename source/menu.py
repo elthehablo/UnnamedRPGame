@@ -92,7 +92,7 @@ class Menu:
         
         parsedMapName = input("enter map .txt file:")
         
-        newmovemap = mapwalker.MapWalker(parsedMapName, [3, 3])
+        newmovemap = mapwalker.MapWalker(parsedMapName, [3, 3], 80)
         newmovemap.start(15)
         self.start()
                     
