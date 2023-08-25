@@ -4,9 +4,13 @@ import numpy as np
 import keyregistry
 import combat
 import mapwalker
+import documentation
 
 class Menu:
-    #this class is used to start the program
+    '''
+    class that handles the whole menu at the beginning of the game
+    '''
+    #clear screen first
     def __init__(self, isSaved, skipTutorial):
         self.isSaved = isSaved
         self.skipTutorial = skipTutorial
@@ -66,13 +70,15 @@ class Menu:
                     debugMap = True
                     break
                 elif(newPosition == 2):
+                    docInput = input("What class do you want to read about?")
+                    documentation.Documentation.readDocumentation(docInput)
+                    break
+                elif(newPosition == 3):
                     debug = False
                     self.start()
         
         while(debugCombat and keyBeingPressed != "quit"):
             #open debug menu
-            
-            
             while(not parseCondition):
                 parsedCreatureID = int(input("enter creature ID:"))
                 if(parsedCreatureID >= 0 and parsedCreatureID < 100000):
@@ -92,8 +98,8 @@ class Menu:
         
         parsedMapName = input("enter map .txt file:")
         
-        newmovemap = mapwalker.MapWalker(parsedMapName, [3, 3], 80)
-        newmovemap.start(15)
+        newMoveMap = mapwalker.MapWalker(parsedMapName, [3, 3], 80)
+        newMoveMap.start(15)
         self.start()
                     
             
@@ -163,6 +169,9 @@ class Menu:
             print(">", end = '')
         print("traverse map")
         if(position == 2):
+            print(">", end = '')
+        print("documentation")
+        if(position == 3):
             print(">", end = '')
         print("exit")
 
