@@ -8,3 +8,4 @@ class Documentation:
                 print(help(combat))
             case _:
                 print("Not a valid docstring")
+        exit(0)
