@@ -70,8 +70,10 @@ class Menu:
                     debugMap = True
                     break
                 elif(newPosition == 2):
-                    docInput = input("What class do you want to read about?")
-                    documentation.Documentation.readDocumentation(docInput)
+                    docInput = "nan"
+                    while(docInput != "exit"):
+                        docInput = input("What class do you want to read about?")
+                        documentation.Documentation.readDocumentation(docInput)
                     break
                 elif(newPosition == 3):
                     debug = False
