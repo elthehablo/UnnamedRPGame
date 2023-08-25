@@ -16,8 +16,11 @@ class Documentation:
             case "importer":
                 print(help(importer))
             case "help":
+                print("------------------------------------")
                 print("Current classes with documentation: ")
                 print("combat, dieroller, drawmap, importer")
+                print("------------------------------------")
+                print("input 'exit' to exit the game")
             case "exit":
                 exit(0)
             case _:

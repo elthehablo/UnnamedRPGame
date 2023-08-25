@@ -72,7 +72,7 @@ class Menu:
                 elif(newPosition == 2):
                     docInput = "nan"
                     while(docInput != "exit"):
-                        docInput = input("What class do you want to read about?")
+                        docInput = input("What class do you want to read about ('help' for help): ")
                         documentation.Documentation.readDocumentation(docInput)
                     break
                 elif(newPosition == 3):
