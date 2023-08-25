@@ -4,7 +4,7 @@ import os
 class DrawMap:
     def PrettyDraw(currentMap):
         '''
-        draws currentMap in a pretty way using a visual library
+        draws currentMap in a pretty way using a visual library see maps/maplegend.md for terrain types
         
         --arguments--
         currentMap -- the current map in a format with integer values to represent the different tiles
