@@ -1,7 +1,9 @@
 import random
 
 class DieRoller:
-    # a class to simulate DND rolling mechanics
+    '''
+    simulates rolling dice of varied sizes
+    '''
     @staticmethod
     def rollD4():
         return random.randint(1, 4)
@@ -24,6 +26,5 @@ class DieRoller:
     
     @staticmethod
     def rollD100():
-        return random.randint(1, 100)
         return random.randint(1, 100)
         

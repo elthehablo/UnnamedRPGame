@@ -13,22 +13,33 @@ class MapWalker:
     '''
     
     
-    def __init__(self, mapname, startingcoords):
-        self.startingcoords = startingcoords
-        importInstance = importer.ImportHandler("source/resources/maps/"+str(mapname))
-        self.importedmap = importInstance.ImportMap()
+    def __init__(self, mapName, startingCoords, mapEncounterOdds):
+        self.startingcoords = startingCoords
+        self.mapEncounterOdds = mapEncounterOdds
+        importInstance = importer.ImportHandler("source/resources/maps/"+str(mapName))
+        self.importedMap = importInstance.ImportMap()
     
-    def start(self, runlength):
-        #initialise mapmover
-        mapmover = mapmovement.MapMovement(self.importedmap, self.startingcoords)
+    def start(self, runLength):
+        '''
+        starts movement on the map
         
-        if(self.importedmap[self.startingcoords[0]][self.startingcoords[1]] == 1):
-            self.importedmap[self.startingcoords[0]][self.startingcoords[1]] = 50 #set to player
-        for i in range(runlength):
+        --arguments--
+        runLength -- the amount of max turns that the map is being run on 
+        
+        --returns--
+        none
+        '''
+        #clear screen first
+        mapmover = mapmovement.MapMovement(self.importedMap, self.startingCoords, self.mapEncounterOdds)
+        
+        if(self.importedMap[self.startingCoords[0]][self.startingCoords[1]] == 1):
+            self.importedMap[self.startingCoords[0]][self.startingCoords[1]] = 50 #set to player
+        for i in range(runLength):
             os.system('cls')
-            drawmap.DrawMap.PrettyDraw(self.importedmap)
+            drawmap.DrawMap.PrettyDraw(self.importedMap)
             keyBeingPressed = keyregistry.KeyRegistry.keyPressed()
             mapmover.move(keyBeingPressed)
+    
             
             
         

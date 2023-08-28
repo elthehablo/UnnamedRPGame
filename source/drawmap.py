@@ -4,9 +4,13 @@ import os
 class DrawMap:
     def PrettyDraw(currentMap):
         '''
-        draws currentMap in a pretty way using a visual library
+        draws currentMap in a pretty way using a visual library see maps/maplegend.md for terrain types
         
-        TODO: we may want to use a txt file and the importer to draw later
+        --arguments--
+        currentMap -- the current map in a format with integer values to represent the different tiles
+        
+        --returns--
+        none
         '''
         #clear screen first
         os.system('cls')
